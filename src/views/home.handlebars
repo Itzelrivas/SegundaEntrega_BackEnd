@@ -1,0 +1,52 @@
+{{#if result}}
+    <div>
+        <h1 style="background-color: rgb(11, 119, 117); padding: 2%; color: white">Todos los productos:</h1>
+        {{#if result.order}}
+            <h3 style="padding: .5%; color: rgb(82, 69, 168); background-color: rgba(82, 69, 168, 0.332)">{{result.order}}</h3>
+        {{/if}}
+
+        <div id="productContainer">
+            {{#each result.docs}}
+                <div class="containerHome">
+                    <h2 style="color: rgb(82, 69, 168)">{{this.title}}</h2>
+                    <h3>Descripción: {{this.description}}</h3>
+                    <h3>Código: {{this.code}}</h3>
+                    <h3>Categoría: {{this.category}}</h3>
+                    <h3>Piezas disponibles: {{this.stock}}</h3>
+                    <h3>Precio: ${{this.price}}</h3>
+                    <!--con esto se comenta -->
+                    {{#each this.thumbnail}}
+                        <img style="width: 20%;" src="/img/{{this}}" alt="{{../title}}"></img>
+                    {{/each}}
+                </div>
+                <br />
+            {{/each}}
+        </div>
+    </div>
+    <br />
+
+    {{#if result.shouldShowPagination}}
+        <div class="pagesContainer">
+            <div class="pagesControl">
+                {{#if result.hasPrevPage}}
+                    <a href="{{result.prevLink}}" style="color: beige"> << Anterior </a>
+                {{/if}}
+
+                &nbsp;
+                {{result.page}}
+                &nbsp;
+
+                {{#if result.hasNextPage}}
+                    <a href="{{result.nextLink}}" style="color: beige"> Siguiente >> </a>
+                {{/if}}
+            </div>
+        </div>
+    {{/if}}
+
+{{else}}
+    {{#if result.isValid}}
+        <h1>No hay productos disponibles.</h1>
+    {{else}}
+        <h2>Error al obtener productos. Por favor, inténtelo de nuevo más tarde.</h2>
+    {{/if}}
+{{/if}}

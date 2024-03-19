@@ -1,0 +1,18 @@
+<div class="chat">
+    <h2 class="titleChat">Chat en tiempo real</h2>
+    <h3>Has ingresado con el correo: <span id="myEmail"></span></h3>
+
+    <div class="sentMessages">
+        <p>Escribe el mensaje que deseas enviar: <input id="messageText" type="text"></p>
+        <p>Da enter para enviar el mensaje...</p>
+        <button id="closeChat">Dejar de participar en el Chat.</button>
+    </div>
+
+    <div class="chatContainer">
+        <p id="chatSpace" class="chatMessages"></p>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/chat.js"></script> 
